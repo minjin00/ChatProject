@@ -1,38 +1,43 @@
-package Ex;
+package chating;
+
+import chating.server.ChatThread;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatRoom {
-    private int ROOMID; //채팅방의 ID
+    //채팅 방
+    private int id;
     private List<ChatThread> chatThreads;
-//    private List<ChatClient> clients; //채팅방 참여 유저
-//    private Map<String, PrintWriter> chatClients = new HashMap<>();
-//    public static List<ChatRoom> chatRooms = new ArrayList<>(); //채팅방 관리하는 리스트
 
-    public ChatRoom(int roomid) {
-     //   this.ROOMID = Integer.parseInt(roomid);
+    public ChatRoom(int id) {
+        this.id = id;
         this.chatThreads = new ArrayList<>();
     }
 
-    public int getROOMID() {
-        return ROOMID;
+    // 채팅방 ID 반환
+    public int getId() {
+        return id;
     }
 
     @Override
     public String toString() {
-        return "방 번호 : " + ROOMID + ", 참여자 수 : " + chatThreads.size();
+        return "방 번호: " + id + ", 참여자 수: " + chatThreads.size();
     }
 
+    // 채팅방에 쓰레드 추가
     public void addChatThread(ChatThread chatThread) {
         chatThreads.add(chatThread);
     }
 
+    // 채팅방에서 쓰레드 제거
     public void removeChatThread(ChatThread chatThread) {
         chatThreads.remove(chatThread);
     }
 
+    // 채팅방에 참여한 쓰레드 목록 반환
     public List<ChatThread> getChatThreads() {
         return chatThreads;
     }
+
 }
